@@ -1,5 +1,16 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner
+
+
 fun main() {
-    val inputCases = arrayOf<Array>()
+    val scanner = Scanner(System.`in`)
+    var gameInProgress = 1
+    while (gameInProgress == 1) {
+        val levelInput = readIntByCase(scanner, InputCase.LEVEL)
+        val selectedLevel = Level.entries.find { it.levelNumber == levelInput }!!
+        val isItWin = playGame(scanner, selectedLevel)
+        if (!isItWin) {
+            println("Вы проиграли...")
+        }
+        gameInProgress = readIntByCase(scanner, InputCase.REPLAY)
+    }
 }
